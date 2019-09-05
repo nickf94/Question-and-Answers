@@ -3,17 +3,18 @@ require 'colorize'
 require_relative 'questions_answers'
 
 ### create class object qanda
-# ques = Questions_and_Answers.new(<que>)
         qanda = Questions_and_Answers.new()
-
+### create a variable to run when the game is over
 game_over = false
 
-until game_over
+until game_over ## loop program untl user closes the program
     prompt = TTY::Prompt.new
     puts "Hello and welcome to my multiple choice quiz, Would you like to start? Yes or No".colorize(:green)
     user_input = gets.chomp
     if user_input == "Yes"
-        puts "Yay! Lets continue". colorize(:light_blue)
+    else
+        exit
+        puts "Yay! Lets continue".colorize(:light_blue)
         qanda.questions.each do |question|
             puts question[:question].colorize(:yellow)
             user_answer = prompt.select("Choose an answer:", question[:answers])
@@ -30,9 +31,11 @@ until game_over
             else
                 game_over = true
                 break
-            end    
+            end
         end
     end
 end
+
+
 
 puts "Come back again"
