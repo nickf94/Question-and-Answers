@@ -13,7 +13,7 @@ until game_over ## loop program untl user closes the program
     user_input = gets.chomp
     if user_input == "Yes"
     else
-        exit
+        exit ## exits the loop if the user says no
         puts "Yay! Lets continue".colorize(:light_blue)
         qanda.questions.each do |question|
             puts question[:question].colorize(:yellow)
